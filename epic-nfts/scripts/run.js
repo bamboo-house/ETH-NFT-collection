@@ -6,6 +6,15 @@ const main = async () => {
   // コントラクトが Mint され、ローカルのブロックチェーンにデプロイされるまで待つ
   await nftContract.deployed();
   console.log("Contract deployed to:", nftContract.address);
+
+  // makeAnEpicNFT 関数を呼び出す。NFTがMintされる。
+  let txn = await nftContract.makeAnEpicNFT();
+  // Minting が仮想マイナーにより、承認されるのを待つ。
+  await txn.wait();
+  // makeAnEpicNFT 関数をもう一度呼び出す。NFTがまたMintされる。
+  txn = await nftContract.makeAnEpicNFT();
+  // Minting が仮想マイナーにより、承認されるのを待つ。
+  await txn.wait();
 };
 
 const runMain = async () => {
