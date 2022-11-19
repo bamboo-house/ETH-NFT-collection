@@ -14,7 +14,7 @@ contract MyEpicNFT is ERC721URIStorage {
   Counters.Counter private _tokenIds;
 
   // NFT トークンの名前とそのシンボルを渡します。
-  constructor() ERC721 ("ShutoNFT", "SHUTO") {
+  constructor() ERC721 ("TanyaNFT", "TANYA") {
     console.log("This is my NFT contract.");
   }
 
@@ -28,7 +28,7 @@ contract MyEpicNFT is ERC721URIStorage {
     _safeMint(msg.sender, newItemId);
 
     // NFT データを設定します。
-    _setTokenURI(newItemId, "https://api.npoint.io/c431507150e061a59c7b");
+    _setTokenURI(newItemId, "https://api.npoint.io/bfdaf57626c67a1f67db");
 
     // NFTがいつ誰に作成されたかを確認します。
     console.log("An NFT w/ ID %s has been minted to %s", newItemId, msg.sender);
