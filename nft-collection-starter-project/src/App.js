@@ -9,12 +9,29 @@ const OPENSEA_LINK = '';
 const TOTAL_MINT_COUNT = 50;
 
 const App = () => {
+  const checkIfWalletIsConnected = () => {
+    /*
+     * ユーザーがMetaMaskを持っているか確認します。
+     */
+    const { ethereum } = window;
+    if (!ethereum) {
+      console.log("Make sure you have MetaMask!");
+      return;
+    } else {
+      console.log("We have the ethereum object", ethereum);
+    }
+  };
+
   // renderNotConnectedContainer メソッドを定義します。
   const renderNotConnectedContainer = () => (
     <button className="cta-button connect-wallet-button">
       Connect to Wallet
     </button>
   );
+
+  useEffect(() => {
+    checkIfWalletIsConnected();
+  }, []);
 
   return (
     <div className="App">
