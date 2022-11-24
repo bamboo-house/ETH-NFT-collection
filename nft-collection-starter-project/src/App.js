@@ -1,4 +1,5 @@
 import { ethers } from "ethers";
+import myEpicNft from "./utils/MyEpicNFT.json";
 import './styles/App.css';
 import twitterLogo from './assets/twitter-logo.svg';
 import React, {useEffect, useState} from "react";
@@ -74,7 +75,7 @@ const App = () => {
         console.log("Mining...please wait.");
         await nftTxn.wait();
 
-        console.log(`Mined, see transaction: https//goerli.etherscan.io/tx/${nftTxn.hash}`);
+        console.log(`Mined, see transaction: https://goerli.etherscan.io/tx/${nftTxn.hash}`);
       } else {
         console.log("Ethereum object dosn't exist!");
       }
