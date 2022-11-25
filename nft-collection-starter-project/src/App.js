@@ -9,6 +9,7 @@ const TWITTER_HANDLE = 'あなたのTwitterのハンドルネームを貼り付�
 const TWITTER_LINK = `https://twitter.com/${TWITTER_HANDLE}`;
 const OPENSEA_LINK = '';
 const TOTAL_MINT_COUNT = 50;
+const CONTRACT_ADDRESS = "0xD7e382c3478aD620E4ca0c47091b3a19511e373e"
 
 const App = () => {
   const [currentAccount, setCurrentAccount] = useState("");
@@ -27,7 +28,7 @@ const App = () => {
           signer
         );
 
-        connectedContract.on("NewEpicNFTMined", (from, tokenId) => {
+        connectedContract.on("NewEpicNFTMinted", (from, tokenId) => {
           console.log(from, tokenId.toNumber());
           alert(`あなたのウォレットに NFT を送信しました。OpenSea に表示されるまで最大で10分かかることがあります。NFT へのリンクはこちらです: https://testnets.opensea.io/assets/${CONTRACT_ADDRESS}/${tokenId.toNumber()}`
           );
@@ -88,7 +89,6 @@ const App = () => {
   };
 
   const askContractToMintNft = async () => {
-    const CONTRACT_ADDRESS = "0xD7e382c3478aD620E4ca0c47091b3a19511e373e"
     try {
       const { ethereum } = window;
       if (ethereum) {
